@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Post List</h1>
+
+{% if user.is_authenticated %}
+    <p><a href="{% url 'posts:create' %}">New post</a></p>
+{% endif %}
+
+<ul>
+    {% for post in post_list %}
+    <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.content }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

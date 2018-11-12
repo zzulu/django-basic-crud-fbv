@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Post Confirm Delete</h1>
+
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ post }}"?</p>
+    <input type="submit" value="Confirm">
+</form>
+
+<p>
+    <a href="{% url 'posts:detail' post.pk %}">Cancel</a>
+</p>
+
+{% endblock %}
