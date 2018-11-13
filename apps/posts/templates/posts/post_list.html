@@ -9,7 +9,7 @@
 {% endif %}
 
 <ul>
-    {% for post in post_list %}
+    {% for post in posts %}
     <li>
         <a href="{{ post.get_absolute_url }}">{{ post.content }}</a>
     </li>

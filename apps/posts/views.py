@@ -5,8 +5,10 @@ from .forms import PostForm, CommentForm
 from .models import Post, Comment
 
 def post_list(request):
-    post_list = Post.objects.all()
-    return render(request, 'posts/post_list.html', {'post_list': post_list})
+    posts = Post.objects.all()
+    return render(request, 'posts/post_list.html', {
+        'posts': posts,
+    })
 
 @login_required
 def post_create(request):
@@ -21,7 +23,7 @@ def post_create(request):
         form = PostForm()
 
     return render(request, 'posts/post_form.html', {
-        'form':form
+        'form': form
     })
 
 def post_detail(request, pk):
