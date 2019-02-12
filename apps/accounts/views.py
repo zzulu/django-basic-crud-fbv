@@ -14,13 +14,12 @@ def login(request):
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect(request.POST.get('next') or 'posts:list')
+            return redirect(request.GET.get('next') or 'posts:list')
     else:
         form = AuthenticationForm()
 
     return render(request, 'registration/login.html', {
         'form': form,
-        'next': request.GET.get('next'),
     })
 
 
